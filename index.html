@@ -221,39 +221,58 @@
         <header class="section-label section-label-light reveal"><span>03B</span><p>The product demo</p><b>START WITH CURIOSITY</b></header>
         <div class="product-heading reveal">
           <h2>WHAT ARE YOU<br><em>THINKING ABOUT?</em></h2>
-          <p>One idea can bring two strangers together.<br>Choose the first idea for the presentation journey.</p>
+          <p>Join a hosted gathering — or find one person who wants to explore the same question.</p>
         </div>
 
-        <div class="idea-list">
-          <article class="idea-card idea-card-feature reveal">
-            <div class="idea-number"><span>IDEA</span><strong>01</strong></div>
+        <div class="product-lane-heading reveal">
+          <span>01 · HOSTED GATHERING</span>
+          <p>A theme, format and time already chosen by a community host.</p>
+        </div>
+        <article class="gathering-card reveal" data-gathering-card>
+          <div class="gathering-index"><span>HITEDX SALON</span><strong>01</strong></div>
+          <figure>
+            <img src="assets/trevor-biamba.jpg" alt="Trevor Biamba, HITEDX member and event host">
+            <figcaption>TREVOR BIAMBA · HOST</figcaption>
+          </figure>
+          <div class="gathering-content">
+            <div class="gathering-meta"><span>MEMBER-LED · 90 MINUTES</span><b>15–20 SEATS</b></div>
+            <h3>FROM INSPIRATION<br><em>TO ACTION.</em></h3>
+            <p class="gathering-summary">A focused salon for people who want to turn one TEDx idea into a useful next step.</p>
+            <div class="gathering-details">
+              <p><span>WHEN</span><strong>THU 10 SEP · 18:30</strong></p>
+              <p><span>FORMAT</span><strong>HOSTED IDEA SALON</strong></p>
+              <p><span>VENUE</span><strong>STOCKHOLM · PARTNER NEEDED</strong></p>
+            </div>
+            <div class="confirmed-sponsor" data-sponsor-brand hidden>
+              <b>NB</b><span>VENUE PARTNER<br><strong>NORTHLINE BAR</strong></span>
+            </div>
+            <div class="gathering-actions">
+              <button class="idea-button" type="button" data-open-event>View hosted event <span aria-hidden="true">→</span></button>
+              <button class="sponsor-button" type="button" data-open-sponsor>Sponsor the venue <span aria-hidden="true">+</span></button>
+            </div>
+          </div>
+        </article>
+
+        <div class="product-lane-heading question-lane-heading reveal">
+          <span>02 · ONE QUESTION, ONE PERSON</span>
+          <p>You choose the meeting format and time together.</p>
+        </div>
+        <div class="idea-list question-list">
+          <article class="idea-card reveal">
+            <div class="idea-number"><span>QUESTION</span><strong>01</strong></div>
             <div class="idea-content">
-              <p class="idea-tag">LEADERSHIP · COMMUNITY</p>
-              <h3>How can one TEDx idea bring 20 strangers into the same room?</h3>
-              <div class="idea-author"><span>Trevor Biamba</span><i></i><span>Stockholm</span></div>
-              <p class="idea-role">TEDx attendee · Sales Director · Global Company <span>Prototype persona</span></p>
-              <p class="curious-count"><b>18</b> people are curious</p>
-              <div class="event-need">
-                <span>AFTER TEDx · MEMBER-LED IDEA SALON</span>
-                <strong>15–20 GUESTS</strong>
-                <p>Venue partner needed · 90 minutes</p>
-                <div class="confirmed-sponsor" data-sponsor-brand hidden>
-                  <b>NB</b><span>VENUE BY<br><strong>NORTHLINE BAR</strong></span>
-                </div>
-              </div>
-              <div class="idea-actions">
-                <button class="idea-button" type="button" data-idea="trevor">I'm curious <span aria-hidden="true">→</span></button>
-                <button class="sponsor-button" type="button" data-open-sponsor>Sponsor the space <span aria-hidden="true">+</span></button>
-              </div>
+              <p class="idea-tag">CITY · COMMUNITY</p>
+              <h3>What if cities were designed for connection, not just efficiency?</h3>
+              <div class="idea-author"><span>Sofia</span><i></i><span>Stockholm</span></div>
+              <p class="curious-count"><b>12</b> people are curious</p>
+              <button class="idea-button" type="button" data-idea="sofia">I'm curious <span aria-hidden="true">→</span></button>
             </div>
             <figure>
-              <img src="assets/trevor-biamba.jpg" alt="Trevor Biamba, HITEDX member and event host">
-              <figcaption>TREVOR BIAMBA · EVENT HOST</figcaption>
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;crop=face&amp;w=700&amp;q=84" alt="Sofia in Stockholm">
             </figure>
           </article>
-
           <article class="idea-card reveal">
-            <div class="idea-number"><span>IDEA</span><strong>02</strong></div>
+            <div class="idea-number"><span>QUESTION</span><strong>02</strong></div>
             <div class="idea-content">
               <p class="idea-tag">TECH · HUMAN</p>
               <h3>Can technology actually make us feel less alone?</h3>
@@ -267,7 +286,7 @@
           </article>
 
           <article class="idea-card idea-card-reverse reveal">
-            <div class="idea-number"><span>IDEA</span><strong>03</strong></div>
+            <div class="idea-number"><span>QUESTION</span><strong>03</strong></div>
             <div class="idea-content">
               <p class="idea-tag">CREATIVITY</p>
               <h3>What would you do if failure wasn't embarrassing?</h3>
@@ -413,6 +432,37 @@
     </section>
   </main>
 
+  <dialog class="event-dialog" id="event-dialog" aria-labelledby="event-title">
+    <button class="event-dialog-close" type="button" aria-label="Close hosted event">×</button>
+    <section>
+      <p class="dialog-step">HOSTED GATHERING · EVERYTHING IS SET</p>
+      <div class="event-dialog-grid">
+        <div class="event-dialog-copy">
+          <p class="event-dialog-type">HITEDX IDEA SALON · 01</p>
+          <h2 id="event-title">FROM INSPIRATION<br><em>TO ACTION.</em></h2>
+          <p>A focused 90-minute conversation hosted by Trevor for 15–20 people. The theme, format and time are already decided — guests only choose whether to join.</p>
+        </div>
+        <div class="event-host-card">
+          <img src="assets/trevor-biamba.jpg" alt="Trevor Biamba, event host">
+          <p><span>HOST</span><strong>TREVOR BIAMBA</strong><small>TEDx attendee · Sales Director<br>Prototype persona</small></p>
+        </div>
+      </div>
+      <div class="event-fixed-details" aria-label="Fixed event details">
+        <div><span>WHEN</span><strong>THU 10 SEP</strong><small>18:30–20:00</small></div>
+        <div><span>FORMAT</span><strong>IDEA SALON</strong><small>Guided · 15–20 people</small></div>
+        <div><span>PLACE</span><strong>STOCKHOLM</strong><small data-event-venue>Venue partner needed</small></div>
+      </div>
+      <div class="event-partner-preview" data-sponsor-brand hidden>
+        <div aria-label="Northline Bar prototype logo">NB</div>
+        <p><span>VENUE PARTNER</span><strong>NORTHLINE BAR</strong><small>Virtual sponsor identity · prototype</small></p>
+      </div>
+      <div class="event-dialog-actions">
+        <button class="button button-red" type="button" data-join-event>Join the guest list <span aria-hidden="true">→</span></button>
+        <button class="button button-ghost" type="button" data-event-sponsor>Sponsor the venue <span aria-hidden="true">+</span></button>
+      </div>
+    </section>
+  </dialog>
+
   <dialog class="experience-dialog" id="idea-dialog" aria-labelledby="dialog-title">
     <button class="dialog-close" type="button" aria-label="Close experience">×</button>
     <div class="dialog-progress" aria-hidden="true"><span data-progress="1"></span><span data-progress="2"></span><span data-progress="3"></span></div>
@@ -420,12 +470,12 @@
     <section class="dialog-view" data-view="idea">
       <p class="dialog-step">01 / CURIOSITY</p>
       <h2 id="dialog-title">THIS IDEA CAUGHT<br>YOUR ATTENTION.</h2>
-      <blockquote data-dialog-idea>“How can one TEDx idea bring 20 strangers into the same room?”</blockquote>
+      <blockquote data-dialog-idea>“What if cities were designed for connection, not just efficiency?”</blockquote>
       <div class="person-card">
-        <img data-person-image src="assets/trevor-biamba.jpg" alt="Trevor Biamba in Stockholm">
+        <img data-person-image src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;crop=face&amp;w=700&amp;q=84" alt="Sofia in Stockholm">
         <div>
-          <p><strong data-person-name>Trevor Biamba</strong> · <span data-person-city>Stockholm</span></p>
-          <q data-person-bio>I attended TEDx and want to host a 90-minute idea salon for 15–20 people. Useful networks begin with one honest conversation.</q>
+          <p><strong data-person-name>Sofia</strong> · <span data-person-city>Stockholm</span></p>
+          <q data-person-bio>I'm curious about how public spaces can help strangers become communities.</q>
         </div>
       </div>
       <div class="dialog-actions">
@@ -461,15 +511,15 @@
     <section class="dialog-view match-view" data-view="match" hidden>
       <p class="dialog-step">03 / CONNECTION</p>
       <div class="said-hi">YOU SAID <em>HI.</em></div>
-      <p class="invitation-copy">Your invitation has been sent to <strong data-match-name>Trevor Biamba</strong>.</p>
+      <p class="invitation-copy">Your invitation has been sent to <strong data-match-name>Sofia</strong>.</p>
       <h2>IT'S A MATCH<span>.</span></h2>
       <div class="match-card">
         <div class="match-people" aria-hidden="true">
           <span class="you-avatar">YOU</span>
-          <img data-match-image src="assets/trevor-biamba.jpg" alt="Trevor Biamba in Stockholm">
+          <img data-match-image src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&amp;fit=crop&amp;crop=face&amp;w=700&amp;q=84" alt="Sofia in Stockholm">
         </div>
         <div class="match-details">
-          <p><strong>You + <span data-match-person>Trevor Biamba</span></strong></p>
+          <p><strong>You + <span data-match-person>Sofia</span></strong></p>
           <p data-match-time>Wednesday · 18:00</p>
           <p><span data-match-format>Coffee</span> · Stockholm</p>
         </div>
@@ -484,11 +534,11 @@
     <section data-sponsor-view="open">
       <p class="dialog-step">VENUE PARTNER · ONE SPOT OPEN</p>
       <h2 id="sponsor-title">GIVE AN IDEA<br><em>A ROOM.</em></h2>
-      <p class="sponsor-intro">Trevor is turning a TEDx idea into a small, useful conversation. The community is ready. The room is missing.</p>
+      <p class="sponsor-intro">Trevor has already set the theme, format and time. The guests are ready. Only the room is missing.</p>
       <div class="sponsor-event-card">
         <div><span>HOST</span><strong>TREVOR BIAMBA</strong><small>Sales Director · Global Company</small></div>
-        <div><span>NEEDED</span><strong>15–20 PEOPLE</strong><small>Stockholm · 90 minutes</small></div>
-        <div><span>YOU PROVIDE</span><strong>THE SPACE</strong><small>HITEDX brings the people and format</small></div>
+        <div><span>EVENT</span><strong>THU · 18:30</strong><small>15–20 people · 90 minutes</small></div>
+        <div><span>YOU PROVIDE</span><strong>THE SPACE</strong><small>Your virtual logo appears on the event</small></div>
       </div>
       <div class="candidate-sponsor">
         <div class="candidate-logo" aria-label="Northline Bar prototype logo">NB</div>

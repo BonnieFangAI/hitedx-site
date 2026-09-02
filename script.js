@@ -3,12 +3,12 @@ const qa = (selector, root = document) => [...root.querySelectorAll(selector)];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const ideas = {
-  trevor: {
-    idea: 'How can one TEDx idea bring 20 strangers into the same room?',
-    person: 'Trevor Biamba',
+  sofia: {
+    idea: 'What if cities were designed for connection, not just efficiency?',
+    person: 'Sofia',
     city: 'Stockholm',
-    bio: 'I attended TEDx and want to host a 90-minute idea salon for 15–20 people. Useful networks begin with one honest conversation.',
-    image: 'assets/trevor-biamba.jpg'
+    bio: 'I’m curious about how public spaces can help strangers become communities.',
+    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&crop=face&w=700&q=84'
   },
   alex: {
     idea: 'Can technology actually make us feel less alone?',
@@ -94,7 +94,7 @@ const progressSteps = qa('[data-progress]', dialog);
 const sayHiButton = q('[data-say-hi]', dialog);
 const sendButton = q('[data-send]', dialog);
 const selectionHint = q('[data-selection-hint]', dialog);
-let currentIdea = ideas.trevor;
+let currentIdea = ideas.sofia;
 let selectedMeeting = '';
 let selectedTime = '';
 let previousFocus = null;
@@ -139,7 +139,7 @@ function resetExperience() {
 }
 
 function openIdea(id, trigger) {
-  currentIdea = ideas[id] || ideas.trevor;
+  currentIdea = ideas[id] || ideas.sofia;
   previousFocus = trigger;
   resetExperience();
   populateIdea(currentIdea);
@@ -215,9 +215,47 @@ q('[data-continue]', dialog).addEventListener('click', () => {
   window.setTimeout(() => q('#why').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' }), 100);
 });
 
+const eventDialog = q('#event-dialog');
+const eventOpenButton = q('[data-open-event]');
+const eventJoinButton = q('[data-join-event]', eventDialog);
+const eventSponsorButton = q('[data-event-sponsor]', eventDialog);
+let eventPreviousFocus = null;
+
+function openEventDialog(trigger) {
+  eventPreviousFocus = trigger;
+  eventDialog.showModal();
+  document.body.classList.add('dialog-open');
+  window.setTimeout(() => q('.event-dialog-close', eventDialog).focus(), 80);
+}
+
+function closeEventDialog({ restoreFocus = true } = {}) {
+  if (!restoreFocus) eventPreviousFocus = null;
+  if (eventDialog.open) eventDialog.close();
+}
+
+eventOpenButton.addEventListener('click', () => openEventDialog(eventOpenButton));
+q('.event-dialog-close', eventDialog).addEventListener('click', () => closeEventDialog());
+eventDialog.addEventListener('click', (event) => {
+  if (event.target === eventDialog) closeEventDialog();
+});
+eventDialog.addEventListener('close', () => {
+  document.body.classList.remove('dialog-open');
+  if (eventPreviousFocus) eventPreviousFocus.focus({ preventScroll: true });
+});
+
+eventJoinButton.addEventListener('click', () => {
+  const joined = eventJoinButton.getAttribute('aria-pressed') === 'true';
+  eventJoinButton.setAttribute('aria-pressed', String(!joined));
+  eventJoinButton.innerHTML = joined
+    ? 'Join the guest list <span aria-hidden="true">→</span>'
+    : 'You’re on the guest list <span aria-hidden="true">✓</span>';
+  toast(joined ? 'GUEST-LIST REQUEST CANCELLED.' : 'YOU JOINED TREVOR’S GUEST LIST.');
+});
+
 const sponsorDialog = q('#sponsor-dialog');
 const sponsorViews = qa('[data-sponsor-view]', sponsorDialog);
 let sponsorPreviousFocus = null;
+let sponsorReturnToEvent = false;
 
 function showSponsorView(name) {
   sponsorViews.forEach((view) => { view.hidden = view.dataset.sponsorView !== name; });
@@ -229,18 +267,35 @@ function setSponsorConfirmed(confirmed) {
   qa('[data-open-sponsor]').forEach((button) => {
     button.innerHTML = confirmed
       ? 'Venue sponsored <span aria-hidden="true">✓</span>'
-      : 'Sponsor the space <span aria-hidden="true">+</span>';
+      : 'Sponsor the venue <span aria-hidden="true">+</span>';
   });
+  q('[data-event-venue]').textContent = confirmed ? 'Northline Bar · venue confirmed' : 'Venue partner needed';
+  eventSponsorButton.innerHTML = confirmed
+    ? 'Venue sponsored <span aria-hidden="true">✓</span>'
+    : 'Sponsor the venue <span aria-hidden="true">+</span>';
   showSponsorView(confirmed ? 'success' : 'open');
 }
 
 qa('[data-open-sponsor]').forEach((button) => button.addEventListener('click', () => {
   sponsorPreviousFocus = button;
+  sponsorReturnToEvent = false;
   showSponsorView(q('[data-sponsor-brand]').hidden ? 'open' : 'success');
   sponsorDialog.showModal();
   document.body.classList.add('dialog-open');
   window.setTimeout(() => q('.sponsor-dialog-close', sponsorDialog).focus(), 80);
 }));
+
+eventSponsorButton.addEventListener('click', () => {
+  sponsorReturnToEvent = true;
+  closeEventDialog({ restoreFocus: false });
+  window.setTimeout(() => {
+    sponsorPreviousFocus = eventSponsorButton;
+    showSponsorView(q('[data-sponsor-brand]').hidden ? 'open' : 'success');
+    sponsorDialog.showModal();
+    document.body.classList.add('dialog-open');
+    window.setTimeout(() => q('.sponsor-dialog-close', sponsorDialog).focus(), 80);
+  }, 60);
+});
 
 q('.sponsor-dialog-close', sponsorDialog).addEventListener('click', () => sponsorDialog.close());
 sponsorDialog.addEventListener('click', (event) => {
@@ -248,7 +303,13 @@ sponsorDialog.addEventListener('click', (event) => {
 });
 sponsorDialog.addEventListener('close', () => {
   document.body.classList.remove('dialog-open');
-  if (sponsorPreviousFocus) sponsorPreviousFocus.focus({ preventScroll: true });
+  if (sponsorReturnToEvent) {
+    sponsorReturnToEvent = false;
+    sponsorPreviousFocus = null;
+    window.setTimeout(() => openEventDialog(eventOpenButton), 60);
+  } else if (sponsorPreviousFocus) {
+    sponsorPreviousFocus.focus({ preventScroll: true });
+  }
 });
 
 q('[data-confirm-sponsor]', sponsorDialog).addEventListener('click', () => {
@@ -262,7 +323,12 @@ q('[data-reset-sponsor]', sponsorDialog).addEventListener('click', () => {
 });
 
 q('[data-view-sponsored-event]', sponsorDialog).addEventListener('click', () => {
+  sponsorReturnToEvent = false;
   sponsorPreviousFocus = null;
   sponsorDialog.close();
-  window.setTimeout(() => q('.idea-card-feature').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' }), 100);
+  window.setTimeout(() => {
+    const gatheringCard = q('[data-gathering-card]');
+    gatheringCard.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+    window.setTimeout(() => openEventDialog(eventOpenButton), reducedMotion ? 0 : 450);
+  }, 100);
 });
