@@ -1,10 +1,14 @@
-# HITEDX — Say Hi. Stay Connected.
+# HITEDX — The Third Space for Ideas & People
 
 A purpose-built interactive concept website for Hyper Island Group 6's Innovation Week project. The interface and visual system are original to this project; no site template or prebuilt theme is used.
 
-The project proposes a year-round Ideas & People Network designed for a potential collaboration between TEDxStockholm and Hyper Island. It explores how one-time audiences can exchange ideas, build useful relationships, take action and return to the annual flagship event — while stronger participation creates measurable value for community partners, sponsors, organisers and volunteers.
+The project is a clickable five-minute presentation prototype built around one simple journey:
 
-This remains an independent student proposal and is not currently an official TED or TEDx website.
+`Idea → Curiosity → Person → Real-life meeting`
+
+TEDx creates the moment. HITEDX keeps the conversation alive by giving an idea somewhere to go after the audience leaves the event. The main demo can be completed without refreshing: choose an idea, say “I’m curious,” meet the person behind it, select a real-life meeting and send the invitation.
+
+This remains an independent Group 6 student proposal and is not currently an official TED or TEDx website. It is intentionally a front-end presentation prototype, not a developed social network.
 
 Production domain: `https://hitedx.se`
 
