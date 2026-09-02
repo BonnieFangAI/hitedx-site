@@ -398,9 +398,20 @@ img { display: block; max-width: 100%; }
 .sponsor-button:hover { background: var(--red); }
 .sponsor-button:hover span { color: var(--white); }
 .idea-card figure { position: relative; margin: 0; overflow: hidden; border-left: 1px solid #444; }
-.idea-card figure img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.08); transition: transform .45s, filter .3s; }
-.idea-card figure img.color-photo { filter: none; }
-.idea-card:hover figure img { transform: scale(1.035); filter: grayscale(.15); }
+.idea-card figure img,
+.idea-card figure img.color-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.48) saturate(.42) contrast(1.12);
+  transform: scale(1);
+  transition: transform .55s cubic-bezier(.2,.75,.2,1), filter .45s ease;
+}
+.idea-card:hover figure img,
+.idea-card:hover figure img.color-photo {
+  transform: scale(1.09);
+  filter: brightness(1.04) saturate(1.08) contrast(1.02);
+}
 .idea-card figure figcaption { position: absolute; inset: auto 14px 14px; padding: 10px; background: var(--black); font-size: 7px; letter-spacing: .12em; }
 .idea-card-reverse figure { order: -1; border-left: 0; border-right: 1px solid #444; }
 .idea-card-reverse { grid-template-columns: minmax(180px, 25%) 110px 1fr; }
@@ -445,7 +456,7 @@ img { display: block; max-width: 100%; }
 .inventor-photo i { align-self: flex-end; color: #666; font-size: 7px; font-style: normal; letter-spacing: .14em; writing-mode: vertical-rl; }
 .inventor-photo-real { padding: 0; }
 .inventor-photo-real::before, .inventor-photo-real::after { display: none; }
-.inventor-photo-real img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 52% 28%; filter: grayscale(1) contrast(1.08); }
+.inventor-photo-real img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 52% 28%; filter: none; }
 .inventor-photo-real i { position: absolute; z-index: 1; right: 9px; bottom: 9px; padding: 6px 4px; background: rgba(0,0,0,.82); color: var(--white); }
 .inventor-grid article > p { min-height: 30px; margin: 11px 0 4px; color: #888; font-size: clamp(8px, .72vw, 12px); line-height: 1.35; letter-spacing: .04em; }
 .inventor-grid article > p b { color: var(--white); }

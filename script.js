@@ -6,7 +6,7 @@ const ideas = {
   bonnie: {
     idea: 'Whose approval are you seeking — and what power are you giving them?',
     person: 'Bao Fang (Bonnie)',
-    city: 'Stockholm',
+    city: 'Södermalm',
     bio: 'I’m curious about why we give other people the power to define our worth — and what changes when we take it back.',
     image: 'assets/bao-fang-bonnie-blue.jpg',
     colorPhoto: true
@@ -14,16 +14,18 @@ const ideas = {
   alex: {
     idea: 'Can technology actually make us feel less alone?',
     person: 'Alex',
-    city: 'Stockholm',
+    city: 'Vasastan',
     bio: 'I’m exploring whether technology can create more presence instead of more noise.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=face&w=700&q=84'
+    image: 'assets/alex-vasastan-ai.webp',
+    colorPhoto: true
   },
   maya: {
     idea: 'What would you do if failure wasn’t embarrassing?',
     person: 'Maya',
-    city: 'Stockholm',
+    city: 'Hammarby Sjöstad',
     bio: 'I’m interested in what people create when they feel safe enough to be unfinished.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=face&w=700&q=84'
+    image: 'assets/maya-hammarby-sjostad-ai.webp',
+    colorPhoto: true
   }
 };
 
@@ -119,6 +121,7 @@ function populateIdea(idea) {
   personImage.classList.toggle('color-photo', Boolean(idea.colorPhoto));
   q('[data-match-name]', dialog).textContent = idea.person;
   q('[data-match-person]', dialog).textContent = idea.person;
+  q('[data-match-city]', dialog).textContent = idea.city;
   matchImage.src = idea.image;
   matchImage.alt = `${idea.person} in ${idea.city}`;
   matchImage.classList.toggle('color-photo', Boolean(idea.colorPhoto));
