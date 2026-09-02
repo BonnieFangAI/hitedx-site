@@ -249,7 +249,7 @@ eventJoinButton.addEventListener('click', () => {
   eventJoinButton.innerHTML = joined
     ? 'Join the guest list <span aria-hidden="true">→</span>'
     : 'You’re on the guest list <span aria-hidden="true">✓</span>';
-  toast(joined ? 'GUEST-LIST REQUEST CANCELLED.' : 'YOU JOINED TREVOR’S GUEST LIST.');
+  toast(joined ? 'GUEST-LIST REQUEST CANCELLED.' : 'YOU JOINED MÅNS’S GUEST LIST.');
 });
 
 const sponsorDialog = q('#sponsor-dialog');

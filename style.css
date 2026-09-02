@@ -286,7 +286,7 @@ img { display: block; max-width: 100%; }
 .product-lane-heading { display: flex; justify-content: space-between; gap: 30px; align-items: baseline; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #555; }
 .product-lane-heading span { color: var(--red); font-size: 10px; font-weight: 950; letter-spacing: .16em; }
 .product-lane-heading p { margin: 0; color: #888; font-size: 11px; }
-.question-lane-heading { margin-top: clamp(58px, 7vw, 100px); }
+.gathering-lane-heading { margin-top: clamp(58px, 7vw, 100px); }
 .gathering-card { display: grid; grid-template-columns: 86px minmax(260px, .75fr) 1.25fr; min-height: 520px; border: 1px solid #777; background: var(--paper); color: var(--black); transition: transform .25s, box-shadow .25s; }
 .gathering-card:hover { transform: translateY(-4px); box-shadow: 0 25px 60px rgba(0,0,0,.35); }
 .gathering-index { display: flex; flex-direction: column; justify-content: space-between; padding: 18px 14px; border-right: 1px solid var(--black); }
@@ -384,8 +384,8 @@ img { display: block; max-width: 100%; }
 .team-credit span, .team-credit p { color: #777; font-size: 9px; font-weight: 850; letter-spacing: .13em; }
 .team-credit strong { color: var(--red); font-size: clamp(30px, 4vw, 58px); letter-spacing: -.05em; }
 .team-credit p { margin: 0; text-align: right; }
-.inventor-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin: -25px 0 90px; background: #444; border: 1px solid #444; }
-.inventor-grid article { min-width: 0; padding: 12px; background: var(--black); }
+.inventor-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 1px; margin: -25px 0 90px; background: #444; border: 1px solid #444; }
+.inventor-grid article { min-width: 0; padding: 7px; background: var(--black); }
 .inventor-photo { position: relative; aspect-ratio: .78; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 13px; background: #111; border: 1px solid #333; }
 .inventor-photo::before, .inventor-photo::after { content: ""; position: absolute; border-radius: 50%; }
 .inventor-photo::before { width: 46%; aspect-ratio: 1; left: 27%; top: 15%; background: #292929; }
@@ -397,7 +397,7 @@ img { display: block; max-width: 100%; }
 .inventor-photo-real::before, .inventor-photo-real::after { display: none; }
 .inventor-photo-real img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 52% 28%; filter: grayscale(1) contrast(1.08); }
 .inventor-photo-real i { position: absolute; z-index: 1; right: 9px; bottom: 9px; padding: 6px 4px; background: rgba(0,0,0,.82); color: var(--white); }
-.inventor-grid article > p { margin: 14px 0 4px; color: #888; font-size: clamp(10px, 1vw, 14px); letter-spacing: .06em; }
+.inventor-grid article > p { min-height: 30px; margin: 11px 0 4px; color: #888; font-size: clamp(8px, .72vw, 12px); line-height: 1.35; letter-spacing: .04em; }
 .inventor-grid article > p b { color: var(--white); }
 .ending footer { display: grid; grid-template-columns: .35fr 1.2fr .65fr 1.3fr; gap: 38px; align-items: start; padding-top: 23px; border-top: 1px solid #444; }
 .ending footer p { margin: 0; color: #777; font-size: 9px; line-height: 1.55; letter-spacing: .06em; }
@@ -649,7 +649,7 @@ img { display: block; max-width: 100%; }
   .meeting-proof > p { grid-column: 2; }
   .meeting-proof > i { grid-column: 3; grid-row: 1 / span 2; }
   .sales-call-slot { grid-row: 1 / span 2; }
-  .inventor-grid { grid-template-columns: repeat(2, 1fr); }
+  .inventor-grid { grid-template-columns: repeat(4, 1fr); }
   .gathering-card { grid-template-columns: 70px 32% 1fr; min-height: 500px; }
   .gathering-content h3 { font-size: clamp(42px, 6vw, 64px); }
   .gathering-details { grid-template-columns: 1fr; }
