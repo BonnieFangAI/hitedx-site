@@ -416,6 +416,54 @@ img { display: block; max-width: 100%; }
   to { opacity: 1; transform: none; }
 }
 
+@media (min-width: 651px) {
+  .experience-dialog {
+    width: min(1020px, calc(100% - 24px));
+    height: min(816px, calc(100svh - 24px));
+    max-height: none;
+    overflow: hidden;
+  }
+  .dialog-view {
+    height: min(812px, calc(100svh - 28px));
+    min-height: 0;
+    overflow: hidden;
+    padding: clamp(28px, 4vh, 44px) clamp(34px, 4vw, 64px) clamp(22px, 3vh, 36px);
+  }
+  .dialog-step { margin-bottom: clamp(12px, 2vh, 22px); }
+  .dialog-view h2 { font-size: clamp(42px, 8vh, 72px); }
+  .dialog-view blockquote {
+    margin: clamp(18px, 3.2vh, 32px) 0;
+    padding-block: clamp(12px, 2vh, 18px);
+    font-size: clamp(25px, 4.4vh, 38px);
+  }
+  .person-card { grid-template-columns: clamp(72px, 11vh, 96px) 1fr; gap: 20px; padding-block: clamp(10px, 1.8vh, 16px); }
+  .person-card img { width: clamp(72px, 11vh, 96px); height: clamp(72px, 11vh, 96px); }
+  .person-card p { margin-bottom: 7px; font-size: 12px; }
+  .person-card q { font-size: clamp(14px, 2.35vh, 18px); line-height: 1.35; }
+  .dialog-actions { margin-top: clamp(14px, 2.5vh, 22px); }
+  .dialog-actions .button { min-height: clamp(48px, 7.5vh, 58px); }
+  .dialog-back { margin-bottom: clamp(12px, 2vh, 20px); }
+  .option-block { margin-top: clamp(16px, 2.7vh, 25px); }
+  .option-block > p { margin-bottom: 8px; }
+  .option-grid button { min-height: clamp(78px, 12vh, 98px); padding: 14px; }
+  .option-grid button span { font-size: 20px; }
+  .option-grid button b { font-size: clamp(16px, 3vh, 23px); }
+  .time-options button { min-height: clamp(58px, 9vh, 72px); }
+  .time-options button b { font-size: clamp(18px, 3.2vh, 23px); }
+  .send-invitation { min-height: clamp(48px, 7.5vh, 56px); margin-top: clamp(14px, 2.4vh, 22px); }
+  .selection-hint { margin-top: 7px; }
+  .said-hi { font-size: clamp(36px, 6.8vh, 56px); }
+  .invitation-copy { margin: 7px 0 clamp(14px, 2.5vh, 22px); font-size: 14px; }
+  .match-view h2 { font-size: clamp(68px, 13vh, 106px); }
+  .match-card { grid-template-columns: .45fr 1.55fr; gap: 25px; margin-top: clamp(14px, 2.5vh, 22px); padding-block: clamp(12px, 2vh, 18px); }
+  .match-people > * { width: clamp(70px, 11vh, 90px); height: clamp(70px, 11vh, 90px); }
+  .match-people .you-avatar { font-size: 17px; }
+  .match-details p { font-size: 13px; }
+  .match-details p:first-child { font-size: 23px; }
+  .match-note { margin: clamp(13px, 2.2vh, 20px) 0; font-size: 10px; }
+  .continue-button { min-height: clamp(48px, 7.5vh, 56px); }
+}
+
 @media (max-width: 1000px) {
   .site-header { grid-template-columns: 1fr auto; height: 64px; }
   .site-header > nav:not(.mobile-nav), .pitch-index { display: none; }
