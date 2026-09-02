@@ -291,6 +291,24 @@ img { display: block; max-width: 100%; }
 .sales-call-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 32%; filter: grayscale(1) contrast(1.08); }
 .sales-call-photo figcaption { position: absolute; inset: auto 9px 9px; z-index: 1; padding: 8px; background: rgba(0,0,0,.9); color: var(--white); font-size: 7px; font-weight: 900; letter-spacing: .12em; }
 .sales-call-photo figcaption small { color: var(--red); font-size: 6px; }
+.sponsor-proof { grid-template-columns: minmax(260px, .68fr) 1.32fr; gap: clamp(30px, 5vw, 78px); align-items: stretch; }
+.sponsor-proof-photo { position: relative; min-height: 500px; margin: 0; overflow: hidden; border: 1px solid #555; background: #151515; }
+.sponsor-proof-photo::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.92)); pointer-events: none; }
+.sponsor-proof-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 53% 31%; filter: grayscale(.15) contrast(1.05); }
+.sponsor-proof-photo figcaption { position: absolute; z-index: 2; inset: 18px 18px auto; padding: 10px 12px; background: rgba(0,0,0,.9); color: var(--white); font-size: 8px; font-weight: 900; letter-spacing: .12em; }
+.sponsor-proof-logo { position: absolute; z-index: 2; inset: auto 18px 18px; display: flex; align-items: center; gap: 12px; padding: 10px; background: var(--paper); color: var(--black); }
+.sponsor-proof-logo > b { display: grid; width: 48px; height: 48px; place-items: center; flex: 0 0 auto; background: var(--red); color: var(--white); font-size: 16px; }
+.sponsor-proof-logo > span { font-size: 7px; line-height: 1.45; letter-spacing: .13em; }
+.sponsor-proof-logo strong { font-size: 10px; }
+.sponsor-proof-copy { display: flex; flex-direction: column; justify-content: center; }
+.sponsor-proof-copy > span { color: var(--red); font-size: 9px; font-weight: 900; letter-spacing: .14em; }
+.sponsor-proof-copy > p { margin: clamp(24px, 4vw, 52px) 0; font-size: clamp(40px, 5.5vw, 84px); line-height: .88; font-weight: 900; letter-spacing: -.065em; }
+.sponsor-proof-copy > p strong { color: var(--red); }
+.sponsor-proof-details { display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 25px; border-block: 1px solid #555; }
+.sponsor-proof-details small { padding: 16px 10px 16px 0; border-right: 1px solid #555; color: #aaa; font-size: 8px; font-weight: 900; letter-spacing: .1em; }
+.sponsor-proof-details small + small { padding-left: 12px; }
+.sponsor-proof-details small:last-child { border-right: 0; }
+.sponsor-proof-copy .button { width: 100%; min-height: 58px; }
 
 .third-space { background: var(--paper); color: var(--black); }
 .third-space-bridge { padding-block: clamp(75px, 9vw, 130px); border-block: 1px solid var(--black); }
@@ -681,6 +699,8 @@ img { display: block; max-width: 100%; }
   .network-line::after { content: "↓"; right: auto; top: auto; left: 50%; bottom: -5px; transform: translateX(-50%); }
   .network-line span { left: 12px; bottom: 50%; transform: translateY(50%); writing-mode: vertical-rl; }
   .meeting-proof { grid-template-columns: 170px 1fr auto; }
+  .meeting-proof.sponsor-proof { grid-template-columns: minmax(230px, .7fr) 1.3fr; }
+  .sponsor-proof-photo { min-height: 430px; }
   .meeting-proof > span { grid-column: 2; }
   .meeting-proof > p { grid-column: 2; }
   .meeting-proof > i { grid-column: 3; grid-row: 1 / span 2; }
@@ -762,7 +782,13 @@ img { display: block; max-width: 100%; }
   .value-exchange article, .value-exchange article + article { min-height: 330px; padding: 30px 0; border-left: 0; border-bottom: 1px solid var(--black); }
   .value-exchange article:last-child { border-bottom: 0; }
   .meeting-proof { grid-template-columns: 1fr; }
+  .meeting-proof.sponsor-proof { grid-template-columns: 1fr; }
   .meeting-proof > span, .meeting-proof > p, .meeting-proof > i, .sales-call-slot { grid-column: 1; grid-row: auto; }
+  .sponsor-proof-photo { min-height: 420px; }
+  .sponsor-proof-copy > p { font-size: 12.5vw; }
+  .sponsor-proof-details { grid-template-columns: 1fr; }
+  .sponsor-proof-details small, .sponsor-proof-details small + small { padding: 13px 0; border-right: 0; border-bottom: 1px solid #555; }
+  .sponsor-proof-details small:last-child { border-bottom: 0; }
   .sales-call-slot { width: min(190px, 68vw); }
   .meeting-proof i { font-size: 45px; }
   .space-line { font-size: 13vw; }
