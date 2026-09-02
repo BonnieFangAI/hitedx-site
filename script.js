@@ -3,12 +3,13 @@ const qa = (selector, root = document) => [...root.querySelectorAll(selector)];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const ideas = {
-  sofia: {
-    idea: 'What if cities were designed for connection, not just efficiency?',
-    person: 'Sofia',
+  bonnie: {
+    idea: 'Whose approval are you seeking — and what power are you giving them?',
+    person: 'Bao Fang (Bonnie)',
     city: 'Stockholm',
-    bio: 'I’m curious about how public spaces can help strangers become communities.',
-    image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&crop=face&w=700&q=84'
+    bio: 'I’m curious about why we give other people the power to define our worth — and what changes when we take it back.',
+    image: 'assets/bao-fang-bonnie-blue.jpg',
+    colorPhoto: true
   },
   alex: {
     idea: 'Can technology actually make us feel less alone?',
@@ -94,7 +95,7 @@ const progressSteps = qa('[data-progress]', dialog);
 const sayHiButton = q('[data-say-hi]', dialog);
 const sendButton = q('[data-send]', dialog);
 const selectionHint = q('[data-selection-hint]', dialog);
-let currentIdea = ideas.sofia;
+let currentIdea = ideas.bonnie;
 let selectedMeeting = '';
 let selectedTime = '';
 let previousFocus = null;
@@ -107,16 +108,20 @@ function showView(name) {
 }
 
 function populateIdea(idea) {
+  const personImage = q('[data-person-image]', dialog);
+  const matchImage = q('[data-match-image]', dialog);
   q('[data-dialog-idea]', dialog).textContent = `“${idea.idea}”`;
   q('[data-person-name]', dialog).textContent = idea.person;
   q('[data-person-city]', dialog).textContent = idea.city;
   q('[data-person-bio]', dialog).textContent = idea.bio;
-  q('[data-person-image]', dialog).src = idea.image;
-  q('[data-person-image]', dialog).alt = `${idea.person} in ${idea.city}`;
+  personImage.src = idea.image;
+  personImage.alt = `${idea.person} in ${idea.city}`;
+  personImage.classList.toggle('color-photo', Boolean(idea.colorPhoto));
   q('[data-match-name]', dialog).textContent = idea.person;
   q('[data-match-person]', dialog).textContent = idea.person;
-  q('[data-match-image]', dialog).src = idea.image;
-  q('[data-match-image]', dialog).alt = `${idea.person} in ${idea.city}`;
+  matchImage.src = idea.image;
+  matchImage.alt = `${idea.person} in ${idea.city}`;
+  matchImage.classList.toggle('color-photo', Boolean(idea.colorPhoto));
 }
 
 function updateInvitationState() {
@@ -139,7 +144,7 @@ function resetExperience() {
 }
 
 function openIdea(id, trigger) {
-  currentIdea = ideas[id] || ideas.sofia;
+  currentIdea = ideas[id] || ideas.bonnie;
   previousFocus = trigger;
   resetExperience();
   populateIdea(currentIdea);
