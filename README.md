@@ -11,6 +11,8 @@ TEDx creates the moment. HITEDX keeps the conversation alive by giving an idea s
 
 The product demo begins with one-to-one question cards, where two curious people choose how and when to meet. It ends with a second, deliberately different journey: team member Måns Nyman, presented as a director and TED speaker, asks how AI filmmaking can retain its humanity and turns that question into a fixed 15–20 person salon. Visitors can join its guest list or use a separate venue-partner flow. A fictional bar can sponsor the room, after which its prototype logo appears on both the event card and event detail modal.
 
+The presentation narrative uses frames from TEDxStockholm's public event highlight and public social-post artwork to make the contrast concrete: the event is alive while the online conversation is quiet. The academic Third Space explainer is reduced to a single bridge statement. The budget/team guardrails and the partnership solution are each split into two visual beats so a presenter can explain one claim at a time.
+
 This remains an independent Group 6 student proposal and is not currently an official TED or TEDx website. It is intentionally a front-end presentation prototype, not a developed social network.
 
 Production domain: `https://hitedx.se`
