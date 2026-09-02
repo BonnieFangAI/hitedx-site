@@ -47,6 +47,30 @@ qa('a', mobileNav).forEach((link) => link.addEventListener('click', () => {
   menuButton.textContent = 'Menu';
 }));
 
+const stageLinks = qa('[data-stage-link]');
+qa('.site-header a[href^="#"]').forEach((link) => link.addEventListener('click', (event) => {
+  const target = q(link.getAttribute('href'));
+  if (!target) return;
+  event.preventDefault();
+  const root = document.documentElement;
+  root.style.scrollBehavior = 'auto';
+  window.scrollTo(0, Math.max(0, target.offsetTop - q('[data-header]').offsetHeight));
+  window.requestAnimationFrame(() => root.style.removeProperty('scroll-behavior'));
+}));
+const stages = qa('[data-stage]');
+function updateActiveStage() {
+  const marker = window.scrollY + q('[data-header]').offsetHeight + 4;
+  const activeStage = [...stages].reverse().find((stage) => stage.offsetTop <= marker);
+  stageLinks.forEach((link) => {
+    const active = activeStage && link.dataset.stageLink === activeStage.dataset.stage;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+window.addEventListener('scroll', updateActiveStage, { passive: true });
+updateActiveStage();
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
