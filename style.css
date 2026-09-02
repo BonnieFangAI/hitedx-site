@@ -757,11 +757,12 @@ img { display: block; max-width: 100%; }
   .inventor-grid article > p { font-size: 9px; }
   .ending footer { grid-template-columns: 1fr; gap: 20px; }
   .footer-partners { flex-wrap: wrap; }
-  .event-dialog { width: 100%; max-height: 100svh; min-height: 100svh; }
+  .event-dialog { inset: 0; width: 100vw; max-width: none; max-height: 100svh; min-height: 100svh; margin: 0; box-sizing: border-box; }
   .event-dialog-close { position: fixed; right: 0; }
-  .event-dialog section { min-height: 100svh; padding: 75px 22px 30px; }
-  .event-dialog-grid { grid-template-columns: 1fr; }
-  .event-dialog h2 { font-size: 16vw; }
+  .event-dialog section { width: 100%; min-height: 100svh; padding: 75px 22px 30px; box-sizing: border-box; }
+  .event-dialog-grid { grid-template-columns: minmax(0, 1fr); }
+  .event-dialog-grid > * { min-width: 0; }
+  .event-dialog h2 { font-size: 11.5vw; }
   .event-host-card { grid-template-columns: 74px 1fr; }
   .event-host-card img { width: 74px; height: 92px; }
   .event-fixed-details { grid-template-columns: 1fr; }
