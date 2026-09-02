@@ -110,3 +110,50 @@ img{max-width:100%}
 @media (max-width:600px){
  .identity-strip{gap:10px}.identity-mark{display:block}.identity-mark span{display:block;margin-bottom:7px}.identity-mark b{display:block;margin-top:6px}.identity-mark img{width:115px;height:auto}.identity-mark.client-mark img{width:142px}.event-gap{grid-template-columns:58px 1fr 58px}.event-marker{padding:12px 7px}.event-marker small{writing-mode:vertical-rl}.event-marker span{display:none}.gap-track{padding-inline:10px}.gap-track>p span{display:none}.gap-actions{left:10px;right:10px}.idea-grid{grid-template-columns:1fr}.idea-card:nth-child(n){clip-path:none}.final footer{grid-template-columns:1fr}
 }
+
+/* Year-round Ideas & People Network */
+.name-story{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #000;margin-top:90px}
+.name-story article{min-height:310px;padding:28px;display:flex;flex-direction:column;border-right:1px solid #000}
+.name-story article:last-child{border-right:0;background:var(--red);color:#fff}
+.name-story span,.rhythm-grid span,.member-promise>span,.exchange-intent span,.value-card>span,.value-card>p,.flywheel-label{font-size:9px;font-weight:800;letter-spacing:.14em}
+.name-story h3{font-size:clamp(25px,2.7vw,45px);line-height:.94;letter-spacing:-.05em;margin:auto 0 20px}
+.name-story p{font-size:15px;line-height:1.5;margin:0}
+.rhythm em{color:var(--red)}
+.rhythm-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #000}
+.rhythm-grid article{min-height:360px;padding:25px;display:flex;flex-direction:column;border-right:1px solid #000}
+.rhythm-grid article:last-child{border-right:0;background:#000;color:#fff}
+.rhythm-grid strong{font-size:clamp(62px,7vw,110px);line-height:1;color:var(--red);letter-spacing:-.08em;margin:auto 0}
+.rhythm-grid h3{font-size:clamp(21px,2vw,34px);line-height:.95;letter-spacing:-.04em;margin:0 0 15px}
+.rhythm-grid p{font-size:15px;line-height:1.5;margin:0}
+.member-promise{display:grid;grid-template-columns:.45fr 1.55fr;align-items:center;gap:35px;border-block:1px solid #000;margin-top:55px;padding:30px 0}
+.member-promise p{font-size:clamp(23px,3vw,48px);line-height:1.1;letter-spacing:-.035em;margin:0;font-weight:800}
+.member-promise b{color:var(--red);font-size:1.3em}
+.exchange-intent{display:grid;grid-template-columns:1fr;gap:7px;margin-top:38px;padding-top:28px;border-top:1px solid #444}
+.exchange-intent span{color:#888;margin-top:8px}
+.exchange-intent b{font-size:13px;line-height:1.35;color:#fff}
+.value-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #000;margin-top:90px}
+.value-card{min-height:430px;padding:26px;display:flex;flex-direction:column;border-right:1px solid #000}
+.value-card:last-child{border-right:0}
+.value-card>p{margin:10px 0 0;color:#555}
+.value-card h3{font-size:clamp(25px,2.65vw,45px);line-height:.94;letter-spacing:-.05em;margin:auto 0}
+.value-card>div{font-size:15px;line-height:1.5}
+.value-card.dominant{background:var(--red);color:#fff}
+.value-card.dominant>p{color:#fff}
+.flywheel-label{color:#888;margin-bottom:10px}
+.impact .ecosystem{grid-template-columns:repeat(15,max-content);padding-bottom:35px}
+.impact .ecosystem .down-link{transform:rotate(-90deg)}
+.how-card:nth-child(4){margin-left:5vw;margin-right:1vw}
+@media (max-width:900px){
+ .name-story,.rhythm-grid,.value-grid{grid-template-columns:1fr 1fr}
+ .name-story article:nth-child(2),.rhythm-grid article:nth-child(2),.value-card:nth-child(2){border-right:0}
+ .name-story article,.rhythm-grid article,.value-card{border-bottom:1px solid #000}
+ .name-story article:last-child,.rhythm-grid article:last-child,.value-card:last-child{border-bottom:0}
+ .member-promise{grid-template-columns:1fr;gap:15px}
+ .how-card:nth-child(4){margin-inline:0}
+}
+@media (max-width:600px){
+ .name-story,.rhythm-grid,.value-grid{grid-template-columns:1fr}
+ .name-story article,.rhythm-grid article,.value-card{min-height:280px;border-right:0}
+ .name-story article:nth-child(2),.rhythm-grid article:nth-child(2),.value-card:nth-child(2){border-right:0}
+ .member-promise p{font-size:25px}
+}

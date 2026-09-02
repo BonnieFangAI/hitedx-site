@@ -67,7 +67,7 @@ if (eventGap) {
     eventGap.style.setProperty('--signal-x', Math.min(100, Math.max(0, start / box.width * 100)) + '%');
   });
   eventGap.addEventListener('pointerleave', () => eventGap.style.setProperty('--signal-x', '50%'));
-  eventGap.addEventListener('click', () => toast('THIS IS WHERE HITEDX LIVES — BETWEEN THE EVENTS.'));
+  eventGap.addEventListener('click', () => toast('ONE BIG EVENT. A WHOLE YEAR OF CONNECTION.'));
 }
 
 qa('.join-question').forEach((button) => button.addEventListener('click', () => {
@@ -95,8 +95,8 @@ qa('[data-interest]').forEach((button) => button.addEventListener('click', () =>
 }));
 q('.match-button').addEventListener('click', (e) => {
   const button = e.currentTarget;
-  button.innerHTML = 'MATCH FOUND <span class="status-mark">01</span>';
-  toast('ONE UNEXPECTED CONVERSATION IS WAITING.');
+  button.innerHTML = 'CIRCLE FOUND <span class="status-mark">03</span>';
+  toast('THREE RELEVANT PEOPLE. ONE SHARED QUESTION.');
 });
 
 qa('.challenge-card > button').forEach((button) => button.addEventListener('click', () => {
