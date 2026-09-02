@@ -3,12 +3,12 @@ const qa = (selector, root = document) => [...root.querySelectorAll(selector)];
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const ideas = {
-  sofia: {
-    idea: 'What if cities were designed for connection, not just efficiency?',
-    person: 'Sofia',
+  trevor: {
+    idea: 'How can one TEDx idea bring 20 strangers into the same room?',
+    person: 'Trevor Biamba',
     city: 'Stockholm',
-    bio: 'I’m curious about how public spaces can help strangers become communities.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=face&w=900&q=86'
+    bio: 'I attended TEDx and want to host a 90-minute idea salon for 15–20 people. Useful networks begin with one honest conversation.',
+    image: 'assets/trevor-biamba.jpg'
   },
   alex: {
     idea: 'Can technology actually make us feel less alone?',
@@ -94,7 +94,7 @@ const progressSteps = qa('[data-progress]', dialog);
 const sayHiButton = q('[data-say-hi]', dialog);
 const sendButton = q('[data-send]', dialog);
 const selectionHint = q('[data-selection-hint]', dialog);
-let currentIdea = ideas.sofia;
+let currentIdea = ideas.trevor;
 let selectedMeeting = '';
 let selectedTime = '';
 let previousFocus = null;
@@ -139,7 +139,7 @@ function resetExperience() {
 }
 
 function openIdea(id, trigger) {
-  currentIdea = ideas[id] || ideas.sofia;
+  currentIdea = ideas[id] || ideas.trevor;
   previousFocus = trigger;
   resetExperience();
   populateIdea(currentIdea);
@@ -213,4 +213,56 @@ q('[data-continue]', dialog).addEventListener('click', () => {
   previousFocus = null;
   closeDialog();
   window.setTimeout(() => q('#why').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' }), 100);
+});
+
+const sponsorDialog = q('#sponsor-dialog');
+const sponsorViews = qa('[data-sponsor-view]', sponsorDialog);
+let sponsorPreviousFocus = null;
+
+function showSponsorView(name) {
+  sponsorViews.forEach((view) => { view.hidden = view.dataset.sponsorView !== name; });
+  sponsorDialog.scrollTop = 0;
+}
+
+function setSponsorConfirmed(confirmed) {
+  qa('[data-sponsor-brand]').forEach((brand) => { brand.hidden = !confirmed; });
+  qa('[data-open-sponsor]').forEach((button) => {
+    button.innerHTML = confirmed
+      ? 'Venue sponsored <span aria-hidden="true">✓</span>'
+      : 'Sponsor the space <span aria-hidden="true">+</span>';
+  });
+  showSponsorView(confirmed ? 'success' : 'open');
+}
+
+qa('[data-open-sponsor]').forEach((button) => button.addEventListener('click', () => {
+  sponsorPreviousFocus = button;
+  showSponsorView(q('[data-sponsor-brand]').hidden ? 'open' : 'success');
+  sponsorDialog.showModal();
+  document.body.classList.add('dialog-open');
+  window.setTimeout(() => q('.sponsor-dialog-close', sponsorDialog).focus(), 80);
+}));
+
+q('.sponsor-dialog-close', sponsorDialog).addEventListener('click', () => sponsorDialog.close());
+sponsorDialog.addEventListener('click', (event) => {
+  if (event.target === sponsorDialog) sponsorDialog.close();
+});
+sponsorDialog.addEventListener('close', () => {
+  document.body.classList.remove('dialog-open');
+  if (sponsorPreviousFocus) sponsorPreviousFocus.focus({ preventScroll: true });
+});
+
+q('[data-confirm-sponsor]', sponsorDialog).addEventListener('click', () => {
+  setSponsorConfirmed(true);
+  toast('VENUE CONFIRMED · SPONSOR LOGO ADDED.');
+});
+
+q('[data-reset-sponsor]', sponsorDialog).addEventListener('click', () => {
+  setSponsorConfirmed(false);
+  toast('SPONSOR DEMO RESET.');
+});
+
+q('[data-view-sponsored-event]', sponsorDialog).addEventListener('click', () => {
+  sponsorPreviousFocus = null;
+  sponsorDialog.close();
+  window.setTimeout(() => q('.idea-card-feature').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' }), 100);
 });
