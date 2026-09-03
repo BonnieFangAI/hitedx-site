@@ -97,10 +97,13 @@ const progressSteps = qa('[data-progress]', dialog);
 const sayHiButton = q('[data-say-hi]', dialog);
 const sendButton = q('[data-send]', dialog);
 const selectionHint = q('[data-selection-hint]', dialog);
+const tokenReward = q('[data-token-reward]', dialog);
+const tokenCount = q('[data-token-count]', dialog);
 let currentIdea = ideas.bonnie;
 let selectedMeeting = '';
 let selectedTime = '';
 let previousFocus = null;
+let tokenAnimationFrame = null;
 
 function showView(name) {
   dialogViews.forEach((view) => { view.hidden = view.dataset.view !== name; });
@@ -133,6 +136,25 @@ function updateInvitationState() {
   selectionHint.textContent = ready
     ? `${selectedMeeting} · ${selectedTime}`
     : 'Choose a meeting and a time.';
+}
+
+function animateTokenReward() {
+  if (tokenAnimationFrame) window.cancelAnimationFrame(tokenAnimationFrame);
+  tokenReward.classList.remove('reward-active');
+  void tokenReward.offsetWidth;
+  tokenReward.classList.add('reward-active');
+  if (reducedMotion) {
+    tokenCount.textContent = '10';
+    return;
+  }
+  tokenCount.textContent = '0';
+  const startedAt = performance.now();
+  const tick = (now) => {
+    const progressValue = Math.min(1, (now - startedAt) / 700);
+    tokenCount.textContent = String(Math.round(progressValue * 10));
+    if (progressValue < 1) tokenAnimationFrame = window.requestAnimationFrame(tick);
+  };
+  tokenAnimationFrame = window.requestAnimationFrame(tick);
 }
 
 function resetExperience() {
@@ -211,6 +233,7 @@ sendButton.addEventListener('click', () => {
   q('[data-match-format]', dialog).textContent = selectedMeeting;
   const finish = () => {
     showView('match');
+    animateTokenReward();
     window.setTimeout(() => q('[data-continue]', dialog).focus(), 80);
   };
   if (reducedMotion) finish();
