@@ -415,7 +415,7 @@
         <h2 class="reveal">THANK<br><em>YOU.</em></h2>
         <div class="ending-copy reveal">
           <p>TEDx gives people the idea.<br>HITEDX gives the idea somewhere to go.</p>
-          <div><strong>SAY HI.</strong><a class="button button-red" href="#top">Start with hi <span aria-hidden="true">↑</span></a></div>
+          <div><strong>SAY HI.</strong><button class="button button-red" type="button" data-open-membership>Start with hi <span aria-hidden="true">→</span></button></div>
         </div>
         <div class="team-credit reveal"><span>THE INVENTORS</span><strong>GROUP 06</strong><p>HYPER ISLAND · TEDxSTOCKHOLM CHALLENGE</p></div>
         <div class="inventor-grid reveal" aria-label="Group 06 inventors">
@@ -565,6 +565,35 @@
         <button class="button button-red" type="button" data-view-sponsored-event>View the event card <span aria-hidden="true">→</span></button>
         <button class="button button-ghost" type="button" data-reset-sponsor>Reset demo</button>
       </div>
+    </section>
+  </dialog>
+
+  <dialog class="membership-dialog" id="membership-dialog" aria-labelledby="membership-title">
+    <button class="membership-dialog-close" type="button" aria-label="Close member registration">×</button>
+    <section class="membership-signup" data-membership-view="signup">
+      <div class="membership-intro">
+        <p class="dialog-step">HITEDX MEMBERSHIP · EARLY ACCESS</p>
+        <h2 id="membership-title">START WITH<br><em>HI.</em></h2>
+        <p>Join a community where one question can lead to one person, one gathering — and somewhere new.</p>
+        <div class="membership-path" aria-label="How HITEDX membership works">
+          <span>01<br><b>ASK</b></span><i>→</i><span>02<br><b>CONNECT</b></span><i>→</i><span>03<br><b>ACT</b></span>
+        </div>
+      </div>
+      <form class="membership-form" data-membership-form>
+        <label><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Name" required></label>
+        <label><span>Email</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" required></label>
+        <label><span>Your Stockholm area</span><input type="text" name="area" autocomplete="address-level2" placeholder="Södermalm, Vasastan…"></label>
+        <label><span>What are you curious about?</span><textarea name="curiosity" rows="3" placeholder="Start with one question…" required></textarea></label>
+        <p class="prototype-note">INTERACTIVE PROTOTYPE · YOUR DETAILS ARE NOT STORED OR SENT.</p>
+        <button class="button button-red" type="submit">Create my membership <span aria-hidden="true">→</span></button>
+      </form>
+    </section>
+    <section class="membership-success" data-membership-view="success" hidden>
+      <p class="dialog-step">MEMBER PROFILE · PROTOTYPE READY</p>
+      <p class="membership-welcome">WELCOME, <strong data-membership-name>NEW MEMBER</strong>.</p>
+      <h2>YOU’RE IN<br>THE <em>CIRCLE.</em></h2>
+      <p>You are ready to ask one question, meet one person and turn curiosity into action.</p>
+      <button class="button button-red" type="button" data-enter-community>Meet the community <span aria-hidden="true">→</span></button>
     </section>
   </dialog>
 

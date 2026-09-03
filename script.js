@@ -340,3 +340,53 @@ q('[data-view-sponsored-event]', sponsorDialog).addEventListener('click', () => 
     window.setTimeout(() => openEventDialog(eventOpenButton), reducedMotion ? 0 : 450);
   }, 100);
 });
+
+const membershipDialog = q('#membership-dialog');
+const membershipOpenButton = q('[data-open-membership]');
+const membershipForm = q('[data-membership-form]', membershipDialog);
+const membershipViews = qa('[data-membership-view]', membershipDialog);
+let membershipPreviousFocus = null;
+
+function showMembershipView(name) {
+  membershipViews.forEach((view) => { view.hidden = view.dataset.membershipView !== name; });
+  membershipDialog.scrollTop = 0;
+}
+
+function openMembershipDialog(trigger) {
+  membershipPreviousFocus = trigger;
+  membershipForm.reset();
+  showMembershipView('signup');
+  membershipDialog.showModal();
+  document.body.classList.add('dialog-open');
+  window.setTimeout(() => q('input[name="name"]', membershipDialog).focus(), 80);
+}
+
+function closeMembershipDialog({ restoreFocus = true } = {}) {
+  if (!restoreFocus) membershipPreviousFocus = null;
+  if (membershipDialog.open) membershipDialog.close();
+}
+
+membershipOpenButton.addEventListener('click', () => openMembershipDialog(membershipOpenButton));
+q('.membership-dialog-close', membershipDialog).addEventListener('click', () => closeMembershipDialog());
+membershipDialog.addEventListener('click', (event) => {
+  if (event.target === membershipDialog) closeMembershipDialog();
+});
+membershipDialog.addEventListener('close', () => {
+  document.body.classList.remove('dialog-open');
+  if (membershipPreviousFocus) membershipPreviousFocus.focus({ preventScroll: true });
+});
+
+membershipForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!membershipForm.reportValidity()) return;
+  const formData = new FormData(membershipForm);
+  const firstName = String(formData.get('name') || 'NEW MEMBER').trim().split(/\s+/)[0];
+  q('[data-membership-name]', membershipDialog).textContent = firstName.toUpperCase();
+  showMembershipView('success');
+  window.setTimeout(() => q('[data-enter-community]', membershipDialog).focus(), 80);
+});
+
+q('[data-enter-community]', membershipDialog).addEventListener('click', () => {
+  closeMembershipDialog({ restoreFocus: false });
+  window.setTimeout(() => q('#ideas').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' }), 100);
+});
